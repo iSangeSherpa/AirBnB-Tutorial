@@ -14,6 +14,9 @@
 		3308594C2B4FD65F0044834D /* AirBnB_TutorialTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3308594B2B4FD65F0044834D /* AirBnB_TutorialTests.swift */; };
 		330859562B4FD65F0044834D /* AirBnB_TutorialUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330859552B4FD65F0044834D /* AirBnB_TutorialUITests.swift */; };
 		330859582B4FD65F0044834D /* AirBnB_TutorialUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330859572B4FD65F0044834D /* AirBnB_TutorialUITestsLaunchTests.swift */; };
+		330859672B4FD71B0044834D /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330859662B4FD71B0044834D /* ExploreView.swift */; };
+		3308596A2B4FD8AE0044834D /* ListingItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330859692B4FD8AE0044834D /* ListingItemView.swift */; };
+		33CAB6222B4FE35200459E1F /* SearchandFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CAB6212B4FE35200459E1F /* SearchandFilterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,9 @@
 		330859512B4FD65F0044834D /* AirBnB-TutorialUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AirBnB-TutorialUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		330859552B4FD65F0044834D /* AirBnB_TutorialUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirBnB_TutorialUITests.swift; sourceTree = "<group>"; };
 		330859572B4FD65F0044834D /* AirBnB_TutorialUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirBnB_TutorialUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		330859662B4FD71B0044834D /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
+		330859692B4FD8AE0044834D /* ListingItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingItemView.swift; sourceTree = "<group>"; };
+		33CAB6212B4FE35200459E1F /* SearchandFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchandFilterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +100,9 @@
 		330859392B4FD65E0044834D /* AirBnB-Tutorial */ = {
 			isa = PBXGroup;
 			children = (
-				3308593A2B4FD65E0044834D /* AirBnB_TutorialApp.swift */,
 				3308593C2B4FD65E0044834D /* ContentView.swift */,
+				330859642B4FD6F70044834D /* Core */,
+				3308593A2B4FD65E0044834D /* AirBnB_TutorialApp.swift */,
 				3308593E2B4FD65F0044834D /* Assets.xcassets */,
 				330859402B4FD65F0044834D /* Preview Content */,
 			);
@@ -125,6 +132,32 @@
 				330859572B4FD65F0044834D /* AirBnB_TutorialUITestsLaunchTests.swift */,
 			);
 			path = "AirBnB-TutorialUITests";
+			sourceTree = "<group>";
+		};
+		330859642B4FD6F70044834D /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				330859652B4FD7040044834D /* Explore */,
+				330859682B4FD8A50044834D /* Listings */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		330859652B4FD7040044834D /* Explore */ = {
+			isa = PBXGroup;
+			children = (
+				330859662B4FD71B0044834D /* ExploreView.swift */,
+				33CAB6212B4FE35200459E1F /* SearchandFilterView.swift */,
+			);
+			path = Explore;
+			sourceTree = "<group>";
+		};
+		330859682B4FD8A50044834D /* Listings */ = {
+			isa = PBXGroup;
+			children = (
+				330859692B4FD8AE0044834D /* ListingItemView.swift */,
+			);
+			path = Listings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,7 +291,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3308593D2B4FD65E0044834D /* ContentView.swift in Sources */,
+				3308596A2B4FD8AE0044834D /* ListingItemView.swift in Sources */,
+				330859672B4FD71B0044834D /* ExploreView.swift in Sources */,
 				3308593B2B4FD65E0044834D /* AirBnB_TutorialApp.swift in Sources */,
+				33CAB6222B4FE35200459E1F /* SearchandFilterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
