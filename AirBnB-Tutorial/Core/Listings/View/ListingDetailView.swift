@@ -9,18 +9,13 @@ import SwiftUI
 import MapKit
 
 struct ListingDetailView: View {
-    var listing_images = [
-        "listing-1",
-        "listing-2",
-        "listing-3",
-        "listing-4"
-    ]
+    var listing: Listing
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         ScrollView {
             ZStack(alignment: .topLeading) {
-                ListingImageCarouselComponent()
+                ListingImageCarouselComponent(listing: listing)
                     .frame(height: 320)
                 
                 Button {
@@ -39,20 +34,20 @@ struct ListingDetailView: View {
             }
             
             VStack(alignment: .leading, spacing: 8) {
-                Text("Kathmandu")
+                Text(listing.address)
                     .font(.title)
                     .fontWeight(.semibold)
                 
                 VStack(alignment: .leading) {
                     HStack {
-                        RatingViewComponent(rating: "4.68")
+                        RatingViewComponent(rating: "\(listing.rating)")
                         
                         Text("28 reviews")
                             .underline()
                             .fontWeight(.semibold)
                     }
                     
-                    Text("Kathmandu")
+                    Text(listing.address)
                 }
                 .font(.caption)
             }
@@ -64,16 +59,16 @@ struct ListingDetailView: View {
             // host info view
             HStack {
                 VStack(alignment: .leading) {
-                    Text("Entire Villa hosted by John Smith")
+                    Text("Entire Villa hosted by \(listing.ownerName)")
                         .font(.headline)
                         .fontWeight(.semibold)
                         .frame(width: 250, alignment: .leading)
                     
                     HStack {
-                        Text("4 guests -")
-                        Text("4 guests -")
-                        Text("4 beds -")
-                        Text("3 baths")
+                        Text("\(listing.numberOfGuests) guests -")
+                        Text("\(listing.numberOfBedrooms) bedrooms -")
+                        Text("\(listing.numberOfBeds) beds -")
+                        Text("\(listing.numberOfBathrooms) baths")
                     }
                     .font(.caption)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -81,7 +76,7 @@ struct ListingDetailView: View {
                 
                 Spacer()
                 
-                Image("person")
+                Image(listing.ownerImageUrl)
                     .resizable()
                     .scaledToFill()
                     .frame(width: 60, height: 60)
@@ -92,16 +87,16 @@ struct ListingDetailView: View {
             Divider()
             
             VStack(alignment: .leading, spacing: 16){
-                ForEach(0..<2) { feature in
+                ForEach(listing.features) { feature in
                     HStack(spacing: 12) {
                         Image(systemName: "medal")
                         
                         VStack(alignment: .leading, spacing: 4) {
-                            Text("Superhost")
+                            Text(feature.title)
                                 .fontWeight(.semibold)
                                 .font(.footnote)
                             
-                            Text("Feature description")
+                            Text(feature.desription)
                                 .font(.caption)
                                 .foregroundStyle(.gray)
                         }
@@ -148,10 +143,10 @@ struct ListingDetailView: View {
                     .font(.headline)
                     .fontWeight(.semibold)
                 
-                ForEach(0..<5) { feature in
+                ForEach(listing.amenities) { amenity in
                     HStack(spacing: 8) {
                         Image(systemName: "wifi")
-                        Text("Wifi")
+                        Text(amenity.description)
                             .font(.footnote)
                         
                         Spacer()
@@ -181,7 +176,7 @@ struct ListingDetailView: View {
                     Divider()
                         .padding(.bottom)
                     
-                    Text("Rs. 500")
+                    Text("Rs. \(listing.pricePerNight)")
                         .font(.subheadline)
                         .fontWeight(.bold)
                     
@@ -214,5 +209,5 @@ struct ListingDetailView: View {
 }
 
 #Preview {
-    ListingDetailView()
+    ListingDetailView(listing: DeveloperPreview.shared.listings[0])
 }

@@ -7,19 +7,21 @@
 
 import Foundation
 
-struct Listing: Identifiable, Codable {
+struct Listing: Identifiable, Codable, Hashable {
     let id : String
     let ownerUid : String
     let ownerName: String
+    let ownerImageUrl: String
     
     let numberOfBedrooms: Int
     let numberOfBathrooms: Int
     let numberOfGuests: Int
     let numberOfBeds: Int
     let pricePerNight: Int
+    let imageUrls: [String]
     
-    let latitude: String
-    let longitude: String
+    let latitude: Double
+    let longitude: Double
     let address: String
     let city: String
     let state: String
@@ -28,6 +30,7 @@ struct Listing: Identifiable, Codable {
     
     var features: [ListingFeatures]
     var amenities: [ListingAmenities]
+    var type: ListingType
 }
 
 
@@ -68,6 +71,18 @@ enum ListingAmenities: Int, Codable, Identifiable, Hashable {
     case tv
     case balcony
     case office
+    
+    var description: String {
+        switch self {
+        case.pool: return "Pool"
+        case.kitchen: return "Kitchen"
+        case.wifi: return "Wifi"
+        case.laundry: return "Laundry"
+        case.tv: return "Tv"
+        case.balcony: return "Balcony"
+        case.office: return "Office"
+        }
+    }
     
     var id: Int { return self.rawValue}
 }

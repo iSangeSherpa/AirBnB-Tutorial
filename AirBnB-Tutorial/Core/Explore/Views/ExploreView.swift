@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ExploreView: View {
+    var viewmodel = ExploreViewModel(service: ExploreService())
     @State var showSearch: Bool = false
     
     var body: some View {
@@ -26,17 +27,17 @@ struct ExploreView: View {
                         }
                     
                     LazyVStack(spacing: 40) {
-                        ForEach(0 ... 10, id: \.self) { listing in
+                        ForEach(viewmodel.listings) { listing in
                             NavigationLink(value: listing){
-                                ListingItemView()
+                                ListingItemView(listing: listing)
                             }
                             .tint(.black)
                         }
                     }
                 }
                 .padding()
-                .navigationDestination(for: Int.self) { listing in
-                    ListingDetailView()
+                .navigationDestination(for: Listing.self) { listing in
+                    ListingDetailView(listing: listing)
                         .navigationBarBackButtonHidden()
                         .toolbar(.hidden, for: .tabBar)
                 }
